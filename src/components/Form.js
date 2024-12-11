@@ -78,11 +78,7 @@ export default function ContactForm() {
       )
       .then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
           setOpenSnackbar(true);
-        },
-        (err) => {
-          console.log("FAILED...", err);
         }
       );
   };

@@ -1,6 +1,7 @@
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box, CssBaseline } from "@mui/material";
 import ClientDescription from "./ClientDescription";
+import PropTypes from 'prop-types';
 
 const importAll = (requireContext) => requireContext.keys().map(requireContext);
 const skinImprovementImages = importAll(
@@ -30,13 +31,63 @@ const items3 = weightLossImages.map((image, index) => ({
   name: `Customer ${index + 1}`,
 }));
 
-export default function CustomerCarousel(props) {
-  const items = props.cz === 1 ? items1 : props.cz === 2 ? items2 : items3;
+// export default function CustomerCarousel(props) {
+//   const items = props.cz === 1 ? items1 : props.cz === 2 ? items2 : items3;
 
+//   return (
+//     <>
+//       <CssBaseline />
+//       <ClientDescription cz={props.cz} />
+//       <Box
+//         sx={{
+//           my: 6,
+//           p: 0,
+//           maxWidth: { xs: "90%", sm: "80%", md: "70%", lg: "60%" },
+//           margin: "0 auto",
+//         }}
+//       >
+//         <Carousel
+//           animation="slide"
+//           indicators={false}
+//           navButtonsAlwaysVisible={true}
+//         >
+//           {items.map((item, index) => (
+//             <Paper
+//               key={index}
+//               elevation={4}
+//               sx={{
+//                 position: "relative",
+//                 display: "flex",
+//                 justifyContent: "center",
+//                 alignItems: "center",
+//                 height: { xs: "300px", sm: "400px", md: "500px", lg: "600px" },
+//                 width: "100%",
+//               }}
+//             >
+//               <img
+//                 src={item.image}
+//                 alt={item.name}
+//                 style={{
+//                   width: "100%",
+//                   height: "100%",
+//                   objectFit: "contain",
+//                   maxHeight: "100%",
+//                 }}
+//               />
+//             </Paper>
+//           ))}
+//         </Carousel>
+//       </Box>
+//     </>
+//   );
+// }
+
+const CustomerCarousel = ({ cz }) => {
+  const items = cz === 1 ? items1 : cz === 2 ? items2 : items3;
   return (
     <>
       <CssBaseline />
-      <ClientDescription cz={props.cz} />
+      <ClientDescription cz={cz} />
       <Box
         sx={{
           my: 6,
@@ -79,4 +130,10 @@ export default function CustomerCarousel(props) {
       </Box>
     </>
   );
-}
+};
+
+CustomerCarousel.propTypes = {
+  cz: PropTypes.string.isRequired,
+};
+
+export default CustomerCarousel;
