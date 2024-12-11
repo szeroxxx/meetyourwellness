@@ -1,4 +1,4 @@
-import { Box, Typography, Divider, Fade } from "@mui/material";
+import { Box, Typography, Fade } from "@mui/material";
 import { useState, useEffect } from "react";
 
 export default function LongDescription() {
